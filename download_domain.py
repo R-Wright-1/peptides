@@ -11,7 +11,7 @@ This requires installation of Biopython: conda install -c conda-forge biopython
 and also pandas: conda install pandas
 
 Note that this seems to struggle with finding paths if they have any spaces. If this is the case, you will get something like the following error:
-    FileNotFoundError: [Errno 2] No such file or directory: '/path/to/directory with spaces/'
+    FileNotFoundError: [Errno 2] No such file or directory: '/path/to/directory with spaces/archaea'
 To fix, just make the directory already. In this case, I would need to make the archaea directory inside the one the script is running from.
 
 The script will also create a log file (.txt) that you can search to check whether there were any sequences that didn't download/unzip/get the taxids changes to kraken ones.
