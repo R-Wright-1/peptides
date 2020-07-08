@@ -35,5 +35,5 @@ python download_domain.py --domain vertebrate_mammalian --complete True --ext dn
 
 Example 3 - this will download the nucleotide sequences of all fungal reference genomes (including scaffolds, contigs, etc.):
 ```{bash, eval=FALSE}
-python download_domain.py --domain fungi --complete False --ext protein
+python download_domain.py --domain fungi --complete False --ext dna
 ```
