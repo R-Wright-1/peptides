@@ -7,6 +7,8 @@ This is to get around the issues with using rsync, wget and ftp (that seem to be
 I have based this upon the scripts at [this repo](https://github.com/fischuu/Kraken_db_install_scripts/) (which crashed before downloading all bacteria for me) to make one script that will download any domain you choose, has the option of downloading only complete genomes or all genomes, can download either protein sequences or nucleotide (DNA) sequences and can download only the human genome from the vertebrate_mammalian section (when given the appropriate options).
 It will also not download something that has already been downloaded, and adds the NCBI taxid to each sequence ID so it is compatible with Kraken2. 
 
+It will also give a log file that tells you each of the sequences it has downloaded and added kraken taxids to, but also any files that it had a problem at some point (search for "Didn't" in the text file to see this).
+
 Please feel free to [email me](mailto:robyn.wright@dal.ca) with any questions.
 
 **It requires the additional packages** (as well as the standard os and argparse packages):
