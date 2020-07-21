@@ -39,3 +39,5 @@ Example 3 - this will download the nucleotide sequences of all fungal reference 
 ```{bash, eval=FALSE}
 python download_domain.py --domain fungi --complete False --ext dna
 ```
+
+Just a further note that the human genome is listed as Chromosome rather than Complete. I have made it so that if adding the complete flag will still download the genome, but this is just something to be aware of.

@@ -78,8 +78,9 @@ for l in list(f.index.values):
       if line["organism_name"] != "Homo sapiens":
           continue
   if complete:
-      if not line['assembly_level'] == 'Complete Genome':
-          continue
+      if not human:
+          if not line['assembly_level'] == 'Complete Genome':
+              continue
   ftppath = line['ftp_path']
   aname = ftppath.split('/')[-1]
   if os.path.exists(aname+ext1+".tax."+ext2):
