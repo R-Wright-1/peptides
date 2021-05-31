@@ -27,8 +27,6 @@ import argparse
 parser = argparse.ArgumentParser(description='This script is to download all sequences from a certain domain that are present in NCBI refseq (ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/).\nThis requires the additional packages pandas and Biopython\nAs long as the script is able to download the assembly summary file, then it will create a log_file that tells you about whether each sequence was downloaded or not')
 parser.add_argument('--domain', dest='domain', default='bacteria',
                     help='pick which domain to download, deafult is bacteria. Other options include: archaea, fungi, protozoa, viral, vertebrate_mammalian (or any others in NCBI refseq)')
-parser.add_argument('--human', dest='human', default=False, 
-                    help="add true here to download only human samples, default is False. Note that this only works if the domain is set to vertebrate_mammalian")
 parser.add_argument('--ext', dest='ext', default='DNA', 
                     help="choose whether to download DNA or protein sequences, default is DNA. Valid options are DNA, dna, protein or Protein")
 parser.add_argument('--complete', dest='complete', default=False, 
@@ -39,7 +37,6 @@ args = parser.parse_args()
 
 wd = os.getcwd()+"/"
 domain = args.domain
-human = args.human
 if args.ext == 'DNA' or args.ext == 'dna':
     ext1, ext2 = '_genomic', '.fna'
 elif args.ext == 'Protein' or args.ext == 'protein':
@@ -74,14 +71,10 @@ except:
 log_file = []
 for l in list(f.index.values):
   line = f.loc[l, :]
-  if human:
-      if line["organism_name"] != "Homo sapiens":
-          continue
   if complete:
-      if not human:
-          if not line['assembly_level'] == 'Complete Genome':
-              if not line['assembly_level'] == 'Chromosome':
-                  continue
+      if not line['assembly_level'] == 'Complete Genome':
+          continue
+  print('Getting '+l)
   ftppath = line['ftp_path']
   aname = ftppath.split('/')[-1]
   if os.path.exists(aname+ext1+".tax."+ext2):
